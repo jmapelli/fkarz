@@ -37,9 +37,9 @@
 <%@ include file="../common/footer.jsp"%>
 
 <script type="text/javascript"
-	src="./assets/js/jquery.backstretch.min.js"></script>
+	src="assets/js/jquery.backstretch.min.js"></script>
 <script>
-	$.backstretch("./assets/img/auth_background.jpg", {
+	$.backstretch("assets/img/auth_background.jpg", {
 		speed : 500
 	});
 </script>

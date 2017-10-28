@@ -1,18 +1,21 @@
 <%@page import="pe.edu.cibertec.fkarz.auth.AuthServlet"%>
+
+<%
+	Boolean authenticated = (Boolean) request.getSession().getAttribute("authenticated");
+%>
+
 <header class="header black-bg">
-	
-<!-- 	<div class="sidebar-toggle-box"> -->
-<!-- 		<div class="fa fa-bars tooltips" data-placement="right" -->
-<!-- 			data-original-title="Toggle Navigation"></div> -->
-<!-- 	</div> -->
+	<a href="" class="logo"><b>F-KARZ</b></a>
 
-	<a href="intranet" class="logo"><b>F-KARZ</b></a>
-
+	<%
+		if (authenticated != null && authenticated) {
+	%>
 	<div class="top-menu">
 
 		<ul class="nav pull-right notify-row top-menu" style="display: block;">
 			<li class="dropdown"><a data-toggle="dropdown"
-				class="dropdown-toggle" href="#" style="margin: 0"> <i class="fa fa-user"></i>
+				class="dropdown-toggle" href="#" style="margin: 0"> <i
+					class="fa fa-user"></i>
 			</a>
 				<ul class="dropdown-menu extended tasks-bar inbox"
 					style="left: auto; right: 0">
@@ -22,7 +25,7 @@
 						<p class="green">Bienvenido!</p>
 					</li>
 
-					<li><a href="index.html#"> <span class="photo"><img
+					<li><a href="#"> <span class="photo"><img
 								alt="avatar" src="assets/img/ui-danro.jpg"></span> <span
 							class="subject"> <span class="from">Josue Mapelli</span>
 						</span> <span class="message">kxel@outlook.com</span>
@@ -35,4 +38,8 @@
 				</ul></li>
 		</ul>
 	</div>
+	<%
+		}
+	%>
+
 </header>
