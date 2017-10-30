@@ -1,8 +1,8 @@
 
 package pe.edu.cibertec.fkarz.auth;
 
-import pe.edu.cibertec.fkarz.usuario.UsuarioEntity;
-import pe.edu.cibertec.fkarz.usuario.UsuarioService;
+import pe.edu.cibertec.fkarz.core.usuario.UsuarioEntity;
+import pe.edu.cibertec.fkarz.core.usuario.UsuarioService;
 
 public class AuthService {
 
@@ -19,7 +19,7 @@ public class AuthService {
 	}
 
 	private void validateRequest(String username, String password) throws Exception {
-		if (username == null && password == null) {
+		if (username.isEmpty() || password.isEmpty()) {
 			throw new Exception("Los datos son invalidos");
 		}
 	}

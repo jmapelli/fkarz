@@ -1,3 +1,4 @@
+<%@page import="pe.edu.cibertec.fkarz.util.Error"%>
 <%@ include file="../common/header.jsp"%>
 
 <div id="login-page">
@@ -15,8 +16,8 @@
 				</button>
 				<br>
 				<%
-					Boolean error = (Boolean) request.getAttribute("error_status");
-					if (error != null && error) {
+					if (request.getAttribute("error_status") != null
+							&& request.getAttribute("error_status").equals(Error.ERROR_STATUS_OK)) {
 				%>
 				<div class="alert alert-danger alert-dismissable"
 					style="margin-bottom: 0">
@@ -36,8 +37,7 @@
 
 <%@ include file="../common/footer.jsp"%>
 
-<script type="text/javascript"
-	src="assets/js/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
 <script>
 	$.backstretch("assets/img/auth_background.jpg", {
 		speed : 500
