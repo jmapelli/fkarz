@@ -8,7 +8,7 @@ import java.util.List;
 import pe.edu.cibertec.fkarz.core.vehiculo.VehiculoEntity;
 import pe.edu.cibertec.fkarz.core.vehiculo.VehiculoService;
 
-public class SearchService {
+public class BuscarService {
 
 	private VehiculoService vs;
 

@@ -12,4 +12,9 @@ public class VehiculoService {
 		return vr.findAvailable(fecha_inicio, fecha_fin);
 	}
 
+	public VehiculoEntity findByNroRegistro(String nroRegistro) {
+		vr = new VehiculoRepository();
+		return vr.findByNoRegistro(nroRegistro);
+	}
+
 }

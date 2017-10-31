@@ -32,6 +32,15 @@ public class ReservaEntity {
 	@Column(nullable = false)
 	private Date fechaFin;
 
+	@Column(nullable = false)
+	private double subTotal;
+
+	@Column(nullable = false)
+	private double garantia;
+
+	@Column(nullable = false)
+	private double total;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Date fechaRegistro;
@@ -74,6 +83,30 @@ public class ReservaEntity {
 
 	public void setFechaRegistro(Date fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
+	}
+
+	public double getSubTotal() {
+		return subTotal;
+	}
+
+	public void setSubTotal(double subTotal) {
+		this.subTotal = subTotal;
+	}
+
+	public double getGarantia() {
+		return garantia;
+	}
+
+	public void setGarantia(double garantia) {
+		this.garantia = garantia;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
 	}
 
 	@PrePersist

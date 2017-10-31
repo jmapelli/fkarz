@@ -7,11 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>F-karz</title>
 
-<link href="assets/css/bootstrap.css" rel="stylesheet">
-<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/assets/css/bootstrap.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
-<link href="assets/css/style.css" rel="stylesheet">
-<link href="assets/css/style-responsive.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/assets/css/to-do.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/assets/css/style.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/assets/css/style-responsive.css" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>

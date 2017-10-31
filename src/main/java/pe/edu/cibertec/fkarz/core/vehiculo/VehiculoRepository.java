@@ -15,19 +15,35 @@ public class VehiculoRepository {
 	private EntityManager em;
 
 	public List<VehiculoEntity> findAvailable(Date fecha_inicio, Date fecha_fin) {
-		List<VehiculoEntity> ve = null;
+		List<VehiculoEntity> ves = null;
 		try {
 			em = Connection.getInstance();
 
-			String sql = "select v.* from vehiculo v " 
-					+ "left join reserva_vehiculo rv on rv.VEHICULO = v.id "
+			String sql = "select v.* from vehiculo v " + "left join reserva_vehiculo rv on rv.VEHICULO = v.id "
 					+ "and rv.FECHARESERVADA between ? and ? " + "where rv.ID is null";
 
 			Query query = em.createNativeQuery(sql, VehiculoEntity.class);
 			query.setParameter(1, fecha_inicio);
 			query.setParameter(2, fecha_fin);
 
-			ve = (List<VehiculoEntity>) query.getResultList();
+			ves = (List<VehiculoEntity>) query.getResultList();
+		} catch (Exception e) {
+			LOG.warning(e.getMessage());
+		}
+
+		return ves;
+	}
+
+	public VehiculoEntity findByNoRegistro(String nroRegistro) {
+		VehiculoEntity ve = null;
+
+		try {
+			em = Connection.getInstance();
+
+			Query query = em.createNativeQuery("select * from vehiculo where nroregistro like ?", VehiculoEntity.class);
+			query.setParameter(1, nroRegistro);
+
+			ve = (VehiculoEntity) query.getSingleResult();
 		} catch (Exception e) {
 			LOG.warning(e.getMessage());
 		}

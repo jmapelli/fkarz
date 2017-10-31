@@ -1,12 +1,19 @@
 <%@page import="pe.edu.cibertec.fkarz.util.Error"%>
 <%@ include file="../common/header.jsp"%>
-
 <div id="login-page">
 	<div class="container">
 
 		<form action="auth" method="post" class="form-login">
 			<h2 class="form-login-heading">Iniciar sesión</h2>
 			<div class="login-wrap">
+				<%
+					if (request.getParameter("redirect") != null && !request.getParameter("redirect").isEmpty()) {
+				%>
+				<input name="redirect" type="hidden"
+					value="<%=request.getParameter("redirect")%>">
+				<%
+					}
+				%>
 				<input name="username" type="text" class="form-control"
 					placeholder="Usuario" autofocus> <br> <input
 					name="password" type="password" class="form-control"

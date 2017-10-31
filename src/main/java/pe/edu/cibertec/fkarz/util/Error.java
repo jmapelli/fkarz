@@ -13,6 +13,7 @@ public class Error {
 	public static void handler(HttpServletRequest req, Exception e) {
 		req.setAttribute("error_status", ERROR_STATUS_OK);
 		req.setAttribute("error_message", e.getMessage());
+		LOG.warning(e.getMessage());
 	}
 
 }

@@ -1,14 +1,10 @@
 <%@page import="pe.edu.cibertec.fkarz.auth.AuthServlet"%>
 
-<%
-	Boolean authenticated = (Boolean) request.getSession().getAttribute("authenticated");
-%>
-
 <header class="header black-bg">
 	<a href="" class="logo"><b>F-KARZ</b></a>
 
 	<%
-		if (authenticated != null && authenticated) {
+		if (request.getSession().getAttribute("authenticated") != null) {
 	%>
 	<div class="top-menu">
 
@@ -26,14 +22,14 @@
 					</li>
 
 					<li><a href="#"> <span class="photo"><img
-								alt="avatar" src="assets/img/ui-danro.jpg"></span> <span
+								alt="avatar" src="<%=request.getContextPath()%>/assets/img/ui-danro.jpg"></span> <span
 							class="subject"> <span class="from">Josue Mapelli</span>
 						</span> <span class="message">kxel@outlook.com</span>
 					</a></li>
 
 					<li><a class="logout" href="#">Mis reservas</a></li>
 					<li><a class="logout"
-						href="auth?action=<%=AuthServlet.ACTION_LOGOUT%>">Cerrar
+						href="<%=request.getContextPath()%>/auth?action=<%=AuthServlet.ACTION_LOGOUT%>">Cerrar
 							sesión</a></li>
 				</ul></li>
 		</ul>

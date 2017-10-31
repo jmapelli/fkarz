@@ -24,8 +24,8 @@ public class AuthServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
 		String action = req.getParameter("action");
+
 		if (action != null) {
 			switch (action) {
 			case ACTION_LOGOUT:
@@ -46,10 +46,12 @@ public class AuthServlet extends HttpServlet {
 			req.removeAttribute("error_message");
 		}
 
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
-
 		try {
+
+			String username = req.getParameter("username");
+			String password = req.getParameter("password");
+			String redirect = req.getParameter("redirect");
+
 			AuthService as = new AuthService();
 			UsuarioEntity ue = as.login(username, password);
 
@@ -57,7 +59,12 @@ public class AuthServlet extends HttpServlet {
 			session.setAttribute("authenticated", true);
 			session.setAttribute("usuario", ue);
 
-			res.sendRedirect(req.getContextPath() + "/intranet");
+			if (redirect != null && !redirect.isEmpty()) {
+				res.sendRedirect(req.getContextPath() + redirect);
+			} else {
+
+			}
+
 		} catch (Exception e) {
 			Error.handler(req, e);
 

@@ -11,31 +11,32 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter(urlPatterns = { "/intranet/*" })
+@WebFilter(urlPatterns = { "/intranet/*", "/extranet/reservar/*" })
 public class SessionFilter implements Filter {
+
+	public void init(FilterConfig fConfig) throws ServletException {
+	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 
-		Boolean authenticated = (Boolean) req.getSession().getAttribute("authenticated");
+		if (req.getParameter("exclude") != null || req.getSession().getAttribute("authenticated") != null) {
+			chain.doFilter(request, response);
+		} else {
+			String redirect = req.getRequestURI();
 
-		if (authenticated != null) {
-			if (authenticated) {
-				chain.doFilter(request, response);
+			if (redirect != null) {
+				redirect = redirect.substring(req.getContextPath().length());
+				res.sendRedirect(req.getContextPath() + "/auth?redirect=" + redirect);
 			} else {
 				res.sendRedirect(req.getContextPath() + "/auth");
 			}
-		} else {
-			res.sendRedirect(req.getContextPath() + "/auth");
 		}
 	}
 
-	public void init(FilterConfig fConfig) throws ServletException {
-	}
-
-	public void destroy() {		
+	public void destroy() {
 	}
 
 }
