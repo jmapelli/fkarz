@@ -21,15 +21,15 @@ public class BuscarExtranetServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private BuscarService bs = null;
+	private BuscarExtranetService bes = null;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String fecha_inicio = req.getParameter("fecha_inicio");
 		String fecha_fin = req.getParameter("fecha_fin");
 
 		try {
-			bs = new BuscarService();
-			List<VehiculoEntity> ves = bs.findVehiculos(fecha_inicio, fecha_fin);
+			bes = new BuscarExtranetService();
+			List<VehiculoEntity> ves = bes.findVehiculos(fecha_inicio, fecha_fin);
 
 			req.setAttribute("vehiculos", ves);
 			req.setAttribute("fecha_inicio", fecha_inicio);

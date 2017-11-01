@@ -113,37 +113,37 @@
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Nro. tarjeta:</label>
 										<div class="col-sm-10">
-											<input type="text" class="form-control"
+											<input name="nro_terjeta" type="text" class="form-control"
 												placeholder="0123-4567-8987-6543">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Vencimiento:</label>
 										<div class="col-sm-2">
-											<input type="text" class="form-control" placeholder="05/20">
+											<input name="fecha_vencimiento" type="text" class="form-control" placeholder="05/20">
 										</div>
 										<label class="col-sm-1 control-label"></label>
 										<div class="col-sm-2">
 										</div>
 										<label class="col-sm-1 control-label">CVV/CVC:</label>
 										<div class="col-sm-2">
-											<input type="text" class="form-control" placeholder="124">
+											<input name="cvv_cvc" type="text" class="form-control" placeholder="124">
 										</div>
 									</div>
 									<label class="checkbox-inline" style="margin-bottom: 15px">
-										<input type="checkbox" value="true"> Deseo factura
+										<input name="facturar" type="checkbox" value="true"> Deseo factura
 										para esta compra
 									</label>
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Razón social:</label>
 										<div class="col-sm-10">
-											<input type="text" class="form-control">
+											<input name="razon_social" type="text" class="form-control">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Nro. ruc:</label>
 										<div class="col-sm-10">
-											<input type="text" class="form-control">
+											<input name="nro_ruc" type="text" class="form-control">
 										</div>
 									</div>
 								</div>
@@ -156,7 +156,7 @@
 						style="margin: auto; float: none;">
 						<div class="col-sm-8">
 							<label class="checkbox-inline" style="margin-bottom: 15px">
-								<input type="checkbox" value="true">Acepto los terminos
+								<input name="aceptar_termino" type="checkbox" value="1">Acepto los terminos
 								y condiciones
 							</label>
 						</div>
