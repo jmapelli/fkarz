@@ -1,10 +1,14 @@
 <%@ include file="../common/header.jsp"%>
-<%@ include file="../common/nav.jsp"%>
 
-<%
-	String mensaje = (String) request.getAttribute("message");
-%>
+<section id="container">
+	<%@ include file="../common/nav.jsp"%>
+	<%@ include file="../common/sidebar.jsp"%>
 
-<%=mensaje%>
+	<section id="main-content">
+		<section class="wrapper">
+		
+		</section>
+	</section>
+</section>
 
 <%@ include file="../common/footer.jsp"%>
