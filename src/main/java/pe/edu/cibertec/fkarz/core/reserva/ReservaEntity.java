@@ -17,101 +17,66 @@ import javax.persistence.TemporalType;
 @Table(name = "reserva")
 public class ReservaEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(nullable = false, unique = true)
-	private String nroOrden;
+    @Column(nullable = false, unique = true)
+    private String nroOrden;
 
-	@Temporal(TemporalType.DATE)
-	@Column(nullable = false)
-	private Date fechaInicio;
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
+    private Date fechaInicio;
 
-	@Temporal(TemporalType.DATE)
-	@Column(nullable = false)
-	private Date fechaFin;
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
+    private Date fechaFin;
 
-	@Column(nullable = false)
-	private double subTotal;
+    @Column(nullable = false)
+    private double total;
 
-	@Column(nullable = false)
-	private double garantia;
+    public Long getId() {
+        return id;
+    }
 
-	@Column(nullable = false)
-	private double total;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false)
-	private Date fechaRegistro;
+    public String getNroOrden() {
+        return nroOrden;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setNroOrden(String nroOrden) {
+        this.nroOrden = nroOrden;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
 
-	public String getNroOrden() {
-		return nroOrden;
-	}
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
 
-	public void setNroOrden(String nroOrden) {
-		this.nroOrden = nroOrden;
-	}
+    public Date getFechaFin() {
+        return fechaFin;
+    }
 
-	public Date getFechaInicio() {
-		return fechaInicio;
-	}
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
 
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
+    public double getTotal() {
+        return total;
+    }
 
-	public Date getFechaFin() {
-		return fechaFin;
-	}
+    public void setTotal(double total) {
+        this.total = total;
+    }
 
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
-	}
-
-	public Date getFechaRegistro() {
-		return fechaRegistro;
-	}
-
-	public void setFechaRegistro(Date fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
-	}
-
-	public double getSubTotal() {
-		return subTotal;
-	}
-
-	public void setSubTotal(double subTotal) {
-		this.subTotal = subTotal;
-	}
-
-	public double getGarantia() {
-		return garantia;
-	}
-
-	public void setGarantia(double garantia) {
-		this.garantia = garantia;
-	}
-
-	public double getTotal() {
-		return total;
-	}
-
-	public void setTotal(double total) {
-		this.total = total;
-	}
-
-	@PrePersist
-	private void prePersist() {
-		this.nroOrden = UUID.randomUUID().toString();
-		this.fechaRegistro = new Date();
-	}
+    @PrePersist
+    private void prePersist() {
+        this.nroOrden = UUID.randomUUID().toString();
+    }
 }

@@ -1,18 +1,16 @@
-package pe.edu.cibertec.fkarz.core.reserva;
+package pe.edu.cibertec.fkarz.core.garantia;
 
 import pe.edu.cibertec.fkarz.db.Connection;
 
+import javax.persistence.EntityManager;
 import java.util.logging.Logger;
 
-import javax.persistence.EntityManager;
+public class GarantiaRepository {
 
-public class ReservaRepository {
-
-    private static final Logger LOG = Logger.getLogger(ReservaRepository.class.getName());
+    private static final Logger LOG = Logger.getLogger(GarantiaRepository.class.getName());
     private EntityManager em;
 
-
-    public ReservaEntity guardar(ReservaEntity entity) {
+    public GarantiaEntity guardar(GarantiaEntity entity) {
         try {
             em = Connection.getInstance();
 
@@ -26,21 +24,7 @@ public class ReservaRepository {
         return entity;
     }
 
-    public ReservaVehiculoEntity guardarDetalle(ReservaVehiculoEntity entity) {
-        try {
-            em = Connection.getInstance();
-
-            em.getTransaction().begin();
-            em.persist(entity);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            LOG.warning(e.getLocalizedMessage());
-        }
-
-        return entity;
-    }
-
-    public ReservaEstadoEntity guardarEstado(ReservaEstadoEntity entity) {
+    public GarantiaEstadoEntity guardarEstado(GarantiaEstadoEntity entity) {
         try {
             em = Connection.getInstance();
 

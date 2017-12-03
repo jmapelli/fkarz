@@ -17,7 +17,7 @@ public class SuscriptorIntranetServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final String ACTION_CREAR = "crear";
+	public static final String ACTION_CREAR = "guardar";
 	public static final String ACTION_EDITAR = "editar";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -52,7 +52,7 @@ public class SuscriptorIntranetServlet extends HttpServlet {
 	}
 
 	private void crear(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/template/intranet/suscriptor/crear.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/template/intranet/suscriptor/guardar.jsp");
 		rd.forward(request, response);
 	}
 

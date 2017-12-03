@@ -38,7 +38,7 @@ public class PagoIntranetServlet extends HttpServlet {
 	}
 
 	private void crear(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/template/intranet/pago/crear.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/template/intranet/pago/guardar.jsp");
 		rd.forward(request, response);
 	}
 

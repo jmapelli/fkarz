@@ -22,7 +22,7 @@ public class SessionFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 
-		if (req.getParameter("exclude") != null || req.getSession().getAttribute("authenticated") != null) {
+		if (req.getSession().getAttribute("authenticated") != null) {
 			chain.doFilter(request, response);
 		} else {
 			String redirect = req.getRequestURI();

@@ -17,7 +17,7 @@ public class VehiculoIntranetServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final String ACTION_CREAR = "crear";
+	public static final String ACTION_CREAR = "guardar";
 	public static final String ACTION_EDITAR = "editar";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -52,7 +52,7 @@ public class VehiculoIntranetServlet extends HttpServlet {
 	}
 
 	private void crear(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/template/intranet/vehiculo/crear.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/template/intranet/vehiculo/guardar.jsp");
 		rd.forward(request, response);
 	}
 

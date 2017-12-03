@@ -1,14 +1,16 @@
-<%@ include file="../common/header.jsp"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
+<%@ include file="../common/header.jsp" %>
 
 <section id="container">
-	<%@ include file="../common/nav.jsp"%>
-	<%@ include file="../common/sidebar.jsp"%>
+    <%@ include file="../common/nav.jsp" %>
+    <%@ include file="../common/sidebar.jsp" %>
 
-	<section id="main-content">
-		<section class="wrapper">
-		
-		</section>
-	</section>
+    <section id="main-content">
+        <section class="wrapper">
+
+        </section>
+    </section>
 </section>
 
-<%@ include file="../common/footer.jsp"%>
+<%@ include file="../common/footer.jsp" %>
