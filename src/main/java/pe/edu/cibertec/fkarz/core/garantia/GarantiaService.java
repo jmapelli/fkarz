@@ -17,7 +17,7 @@ public class GarantiaService {
         garantia.setReserva(reserva);
         garantia = repository.guardar(garantia);
 
-        this.guardarEstado(Estado.GENERADO.val(), garantia);
+        this.guardarEstado(Estado.RETENIDO.val(), garantia);
 
         return garantia;
     }
@@ -27,6 +27,18 @@ public class GarantiaService {
         gee.setGarantia(garantia);
         gee.setEstado(estado);
         repository.guardarEstado(gee);
+    }
+
+    public GarantiaEntity findByReserva(Long idReserva) {
+        repository = new GarantiaRepository();
+
+        return repository.findByReserva(idReserva);
+    }
+
+    public GarantiaEstadoEntity getEstado(Long idGarantia) {
+        repository = new GarantiaRepository();
+
+        return repository.getEstado(idGarantia);
     }
 
 }

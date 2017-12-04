@@ -123,14 +123,15 @@
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Nro. tarjeta:</label>
                                         <div class="col-sm-10">
-                                            <input name="nro_terjeta" type="text" class="form-control"
+                                            <input id="nroTarjeta" name="nro_terjeta" type="text" class="form-control"
                                                    placeholder="0123-4567-8987-6543">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Vencimiento:</label>
                                         <div class="col-sm-2">
-                                            <input name="fecha_vencimiento" type="text" class="form-control"
+                                            <input id="fechaExpiracion" name="fecha_vencimiento" type="text"
+                                                   class="form-control"
                                                    placeholder="05/20">
                                         </div>
                                         <label class="col-sm-1 control-label"></label>
@@ -138,7 +139,8 @@
                                         </div>
                                         <label class="col-sm-1 control-label">CVV/CVC:</label>
                                         <div class="col-sm-2">
-                                            <input name="cvv_cvc" type="text" class="form-control" placeholder="124">
+                                            <input id="cvv" name="cvv_cvc" type="text" class="form-control"
+                                                   placeholder="124">
                                         </div>
                                     </div>
                                 </div>
@@ -172,7 +174,11 @@
 <script>
     $(function () {
         $('#reservar').click(function () {
-            $.post('reservar', {},
+            $.post('reservar', {
+                    nroTarjeta: $('#nroTarjeta').val(),
+                    fechaExpiracion: $('#fechaExpiracion').val(),
+                    cvv: $('#cvv').val()
+                },
                 function (response) {
                     $('#result_search').html(response);
                 });

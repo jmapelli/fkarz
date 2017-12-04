@@ -2,6 +2,7 @@ package pe.edu.cibertec.fkarz.extranet;
 
 import pe.edu.cibertec.fkarz.core.reserva.ReservaEntity;
 import pe.edu.cibertec.fkarz.core.reserva.ReservaService;
+import pe.edu.cibertec.fkarz.core.usuario.UsuarioEntity;
 import pe.edu.cibertec.fkarz.core.vehiculo.VehiculoEntity;
 import pe.edu.cibertec.fkarz.util.Error;
 
@@ -33,13 +34,14 @@ public class ReservarExtranetServlet extends HttpServlet {
 
         VehiculoEntity vehiculo = (VehiculoEntity) request.getSession().getAttribute("vehiculo");
         ReservaEntity reserva = (ReservaEntity) request.getSession().getAttribute("reserva");
+        UsuarioEntity suscriptor = (UsuarioEntity) request.getSession().getAttribute("usuario");
         String nroTarjeta = request.getParameter("nroTarjeta");
         String fechaExpiracion = request.getParameter("fechaExpiracion");
         String cvv = request.getParameter("cvv");
 
         try {
             rs.cobrar(nroTarjeta, fechaExpiracion, cvv);
-            rs.reservar(vehiculo, reserva);
+            rs.reservar(vehiculo, reserva, suscriptor);
 
             request.getSession().removeAttribute("vehiculo");
             request.getSession().removeAttribute("reserva");
