@@ -45,4 +45,12 @@ public class VehiculoService {
         }
     }
 
+    public void save(VehiculoEntity vehiculoEntity) throws Exception {
+        vr = new VehiculoRepository();
+        vehiculoEntity = vr.save(vehiculoEntity);
+
+        if(vehiculoEntity == null){
+            throw new Exception("Nro de registro duplicado");
+        }
+    }
 }

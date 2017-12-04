@@ -51,4 +51,19 @@ public class VehiculoRepository {
 		return ve;
 	}
 
+	public VehiculoEntity save(VehiculoEntity vehiculoEntity){
+		try {
+			em = Connection.getInstance();
+			em.getTransaction().begin();
+			em.persist(vehiculoEntity);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			vehiculoEntity = null;
+			LOG.warning(e.getLocalizedMessage());
+		}
+
+		return vehiculoEntity;
+
+	}
+
 }
