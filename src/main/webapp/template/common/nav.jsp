@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <%@page import="pe.edu.cibertec.fkarz.auth.AuthServlet" %>
+<%@ page import="pe.edu.cibertec.fkarz.core.usuario.UsuarioEntity" %>
+<%@ page import="pe.edu.cibertec.fkarz.util.Rol" %>
+
+<%
+    UsuarioEntity usuario = (UsuarioEntity) request.getSession().getAttribute("usuario");
+%>
 
 <header class="header black-bg">
     <a href="" class="logo"><b>F-KARZ</b></a>
 
     <%
-        if (request.getSession().getAttribute("authenticated") != null) {
+        if (request.getSession().getAttribute("authenticated") != null && usuario.getRol() == Rol.SUSCRIPTOR.val()) {
     %>
     <div class="top-menu">
 

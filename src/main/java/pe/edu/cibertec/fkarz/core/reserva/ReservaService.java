@@ -28,6 +28,20 @@ public class ReservaService {
         return cant_dias * precio;
     }
 
+    public void cobrar(String tarjeta, String fechaExpiracion, String cvv) throws Exception {
+        if (tarjeta == null || tarjeta.isEmpty()) {
+            throw new Exception("La tarjeta es invalida");
+        }
+
+        if (fechaExpiracion == null || fechaExpiracion.isEmpty()) {
+            throw new Exception("La fecha es invalida");
+        }
+
+        if (cvv == null || cvv.isEmpty()) {
+            throw new Exception("El codigo cvv es necesario");
+        }
+    }
+
     public ReservaEntity reservar(VehiculoEntity vehiculo, ReservaEntity reserva) throws Exception {
         garantiaService = new GarantiaService();
         pagoService = new PagoService();

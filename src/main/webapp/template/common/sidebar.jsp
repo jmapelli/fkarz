@@ -44,6 +44,11 @@
             <li class="mt" style="margin-top: 0px;"><a href="<%=request.getContextPath()%>/intranet/pago">
                 <i class="fa fa-money"></i><span>Pagos</span>
             </a></li>
+
+            <li class="mt" style="margin-top: 0px;"><a
+                    href="<%=request.getContextPath()%>/auth?action=<%=AuthServlet.ACTION_LOGOUT%>">
+                <i class="fa fa-sign-out"></i><span>Cerrar sesión</span>
+            </a></li>
         </ul>
     </div>
 </aside>
