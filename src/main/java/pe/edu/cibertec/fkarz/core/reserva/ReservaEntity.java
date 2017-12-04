@@ -1,17 +1,10 @@
 package pe.edu.cibertec.fkarz.core.reserva;
 
+import pe.edu.cibertec.fkarz.core.usuario.UsuarioEntity;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "reserva")
@@ -34,6 +27,10 @@ public class ReservaEntity {
 
     @Column(nullable = false)
     private double total;
+
+    @ManyToOne(targetEntity = UsuarioEntity.class)
+    @JoinColumn(name = "suscriptor", nullable = false)
+    private UsuarioEntity suscriptor;
 
     public Long getId() {
         return id;
@@ -73,6 +70,14 @@ public class ReservaEntity {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public UsuarioEntity getSuscriptor() {
+        return suscriptor;
+    }
+
+    public void setSuscriptor(UsuarioEntity suscriptor) {
+        this.suscriptor = suscriptor;
     }
 
     @PrePersist

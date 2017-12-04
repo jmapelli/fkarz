@@ -7,16 +7,16 @@ import java.util.List;
 
 public class VehiculoService {
 
-    private VehiculoRepository vr = null;
+    private VehiculoRepository repository = null;
 
     public List<VehiculoEntity> findAvailable(Date fecha_inicio, Date fecha_fin) {
-        vr = new VehiculoRepository();
-        return vr.findAvailable(fecha_inicio, fecha_fin);
+        repository = new VehiculoRepository();
+        return repository.findAvailable(fecha_inicio, fecha_fin);
     }
 
     public VehiculoEntity findByNroRegistro(String nroRegistro) {
-        vr = new VehiculoRepository();
-        return vr.findByNoRegistro(nroRegistro);
+        repository = new VehiculoRepository();
+        return repository.findByNoRegistro(nroRegistro);
     }
 
     public List<VehiculoEntity> findVehiculos(String fecha_inicio, String fecha_fin) throws Exception {
@@ -46,11 +46,18 @@ public class VehiculoService {
     }
 
     public void save(VehiculoEntity vehiculoEntity) throws Exception {
-        vr = new VehiculoRepository();
-        vehiculoEntity = vr.save(vehiculoEntity);
+        repository = new VehiculoRepository();
+        vehiculoEntity = repository.save(vehiculoEntity);
 
         if(vehiculoEntity == null){
             throw new Exception("Nro de registro duplicado");
         }
     }
+
+    public VehiculoEntity findByReserva(Long idReserva) {
+        repository = new VehiculoRepository();
+
+        return repository.findByReserva(idReserva);
+    }
+
 }

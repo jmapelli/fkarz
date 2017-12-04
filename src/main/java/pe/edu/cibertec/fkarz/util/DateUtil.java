@@ -27,8 +27,16 @@ public class DateUtil {
     }
 
     public static String toString(String pattern, Date fecha) {
-        DateFormat df = new SimpleDateFormat(pattern);
-        return df.format(fecha);
+        String date = "";
+
+        try {
+            DateFormat df = new SimpleDateFormat(pattern);
+            date = df.format(fecha);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return date;
     }
 
     public static Date toDate(String pattern, String fecha) {

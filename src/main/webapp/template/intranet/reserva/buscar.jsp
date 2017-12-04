@@ -1,3 +1,4 @@
+<%@ page import="pe.edu.cibertec.fkarz.intranet.reserva.ReservaBuscarIntranetServlet" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <%@ include file="../../common/header.jsp" %>
@@ -21,20 +22,40 @@
                         </div>
                         <div class="panel-body">
                             <div class="task-content" style="margin-bottom: 0">
-                                <form class="form-inline">
+                                <form class="form-horizontal">
                                     <div class="form-group">
-                                        <input type="text" class="form-control"
-                                               placeholder="Buscar por nro. reserva">
+                                        <label class="col-sm-2 col-sm-2 control-label">Buscar</label>
+                                        <div class="col-sm-10">
+                                            <select id="action" class="form-control">
+                                                <option value="<%=ReservaBuscarIntranetServlet.ACTION_FINDBYSUSCRIPTOR%>">
+                                                    Por Suscriptor
+                                                </option>
+                                                <option value="<%=ReservaBuscarIntranetServlet.ACTION_FINDBYRESERVA%>"
+                                                        disabled>Por reserva
+                                                </option>
+
+                                            </select>
+                                        </div>
                                     </div>
+
                                     <div class="form-group">
-                                        <input type="text" class="form-control"
-                                               placeholder="Buscar por suscriptor">
+                                        <label class="col-sm-2 col-sm-2 control-label">Valor</label>
+                                        <div class=" col-sm-10">
+                                            <div class="input-group">
+                                                <input id="valor" type="text"
+                                                       class="form-control col-sm-10">
+                                                <span class="input-group-btn">
+                                            <button id="buscar" class="btn btn-primary" type="button">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <button class="btn btn-theme">Buscar</button>
                                 </form>
                             </div>
                             <hr style="border-top: 1px solid #ddd;">
-                            <div id="result" style="margin: 5px;">
+                            <div style="margin: 5px;">
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
@@ -47,46 +68,7 @@
                                         <th></th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Rxxxxxx</td>
-                                        <td>3216548</td>
-                                        <td>Josue Mapelli</td>
-                                        <td>20-05-2017</td>
-                                        <td>20-05-2017</td>
-                                        <td>ACTIVO</td>
-                                        <td>
-                                            <button class="btn btn-success btn-xs">
-                                                <i class="fa fa-sign-in"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rxxxxxx</td>
-                                        <td>3216548</td>
-                                        <td>Josue Mapelli</td>
-                                        <td>20-05-2017</td>
-                                        <td>20-05-2017</td>
-                                        <td>ACTIVO</td>
-                                        <td>
-                                            <button class="btn btn-success btn-xs">
-                                                <i class="fa fa-sign-in"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rxxxxxx</td>
-                                        <td>3216548</td>
-                                        <td>Josue Mapelli</td>
-                                        <td>20-05-2017</td>
-                                        <td>20-05-2017</td>
-                                        <td>ACTIVO</td>
-                                        <td>
-                                            <button class="btn btn-success btn-xs">
-                                                <i class="fa fa-sign-in"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    <tbody id="buscar_result">
                                     </tbody>
                                 </table>
                             </div>
@@ -100,5 +82,20 @@
         </section>
     </section>
 </section>
-
 <%@ include file="../../common/footer.jsp" %>
+
+<script>
+    $(function () {
+        $('#buscar').click(function (e) {
+            e.preventDefault();
+
+            $.get('buscar', {
+                    action: $('#action').val(),
+                    valor: $('#valor').val()
+                }, function (response) {
+                    $('#buscar_result').html(response);
+                }
+            );
+        });
+    });
+</script>

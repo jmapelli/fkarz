@@ -13,7 +13,7 @@
             <h5 class="centered">Josue Mapelli</h5>
 
             <li class="mt"><a
-                    href="<%=request.getContextPath()%>/intranet/reserva"> <i
+                    href="<%=request.getContextPath()%>/intranet/reserva/buscar"> <i
                     class="fa fa-book"></i><span>Reservas</span>
             </a></li>
 

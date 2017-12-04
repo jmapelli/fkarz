@@ -2,11 +2,13 @@ package pe.edu.cibertec.fkarz.core.reserva;
 
 import pe.edu.cibertec.fkarz.core.garantia.GarantiaService;
 import pe.edu.cibertec.fkarz.core.pago.PagoService;
+import pe.edu.cibertec.fkarz.core.usuario.UsuarioEntity;
 import pe.edu.cibertec.fkarz.core.vehiculo.VehiculoEntity;
 import pe.edu.cibertec.fkarz.util.DateUtil;
 import pe.edu.cibertec.fkarz.util.Estado;
 
 import java.util.Date;
+import java.util.List;
 
 public class ReservaService {
 
@@ -42,10 +44,11 @@ public class ReservaService {
         }
     }
 
-    public ReservaEntity reservar(VehiculoEntity vehiculo, ReservaEntity reserva) throws Exception {
+    public ReservaEntity reservar(VehiculoEntity vehiculo, ReservaEntity reserva, UsuarioEntity suscriptor) throws Exception {
         garantiaService = new GarantiaService();
         pagoService = new PagoService();
 
+        reserva.setSuscriptor(suscriptor);
         reserva = this.guardar(reserva);
 
         Date fecha = null;
@@ -71,6 +74,8 @@ public class ReservaService {
     }
 
     public ReservaVehiculoEntity guardarDetalle(Date fecha, VehiculoEntity vehiculo, ReservaEntity reserva) throws Exception {
+        repository = new ReservaRepository();
+
         ReservaVehiculoEntity rve = new ReservaVehiculoEntity();
         rve.setFechaReservada(fecha);
         rve.setVehiculo(vehiculo);
@@ -81,10 +86,38 @@ public class ReservaService {
     }
 
     public void guardarEstado(int estado, ReservaEntity reserva) throws Exception {
+        repository = new ReservaRepository();
+
         ReservaEstadoEntity ree = new ReservaEstadoEntity();
         ree.setReserva(reserva);
         ree.setEstado(estado);
 
         repository.guardarEstado(ree);
+    }
+
+    public List<ReservaEntity> findBySuscriptor(String nroDocumento) throws Exception {
+        repository = new ReservaRepository();
+
+        if (nroDocumento == null) {
+            throw new Exception("El nro. de documento es invalido");
+        }
+
+        return repository.findBySuscriptor(nroDocumento);
+    }
+
+    public ReservaEntity findById(Long id) throws Exception {
+        repository = new ReservaRepository();
+
+        return repository.findById(id);
+    }
+
+    public ReservaEstadoEntity getEstado(ReservaEntity reserva) {
+        repository = new ReservaRepository();
+        return repository.getEstado(reserva);
+    }
+
+    public List<ReservaPenalizacionEntity> getPenalizaciones(Long idReserva) {
+        repository = new ReservaRepository();
+        return repository.getPenalizaciones(idReserva);
     }
 }
