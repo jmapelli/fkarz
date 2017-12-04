@@ -2,6 +2,7 @@
          pageEncoding="ISO-8859-1" %>
 <%@page
         import="pe.edu.cibertec.fkarz.intranet.SuscriptorIntranetServlet" %>
+<%@ page import="pe.edu.cibertec.fkarz.intranet.VehiculoIntranetServlet" %>
 <aside>
     <div id="sidebar" class="nav-collapse ">
         <ul class="sidebar-menu" id="nav-accordion">
@@ -36,7 +37,7 @@
                 <ul class="sub">
                     <li><a href="<%=request.getContextPath()%>/intranet/vehiculo">Listar veh�culos</a></li>
                     <li>
-                        <a href="<%=request.getContextPath()%>/intranet/vehiculo?action=<%=SuscriptorIntranetServlet.ACTION_CREAR%>">Crear
+                        <a href="<%=request.getContextPath()%>/intranet/vehiculo?action=<%=VehiculoIntranetServlet.ACTION_CREAR%>">Crear
                             veh�culo</a></li>
                 </ul>
             </li>
