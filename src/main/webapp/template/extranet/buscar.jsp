@@ -4,8 +4,6 @@
 <%@page import="pe.edu.cibertec.fkarz.extranet.BuscarExtranetServlet" %>
 <%@page import="java.util.List" %>
 <%@ page import="pe.edu.cibertec.fkarz.util.Error" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
 
 <%
     if (request.getAttribute("error_status") != null

@@ -1,7 +1,5 @@
 package pe.edu.cibertec.fkarz.core.garantia;
 
-import pe.edu.cibertec.fkarz.core.recurso.RecursoEntity;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -17,9 +15,8 @@ public class GarantiaEstadoEntity {
     @JoinColumn(name = "GARANTIA", nullable = false)
     private GarantiaEntity garantia;
 
-    @ManyToOne(targetEntity = RecursoEntity.class)
-    @JoinColumn(name = "ESTADO", nullable = false)
-    private RecursoEntity estado;
+    @Column(nullable = false)
+    private int estado;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
@@ -41,11 +38,11 @@ public class GarantiaEstadoEntity {
         this.garantia = garantia;
     }
 
-    public RecursoEntity getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(RecursoEntity estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 

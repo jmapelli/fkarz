@@ -1,7 +1,5 @@
 package pe.edu.cibertec.fkarz.core.reserva;
 
-import pe.edu.cibertec.fkarz.core.recurso.RecursoEntity;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -23,9 +21,8 @@ public class ReservaPenalizacionEntity {
     @JoinColumn(name = "RESERVA", nullable = false)
     private ReservaEntity reserva;
 
-    @ManyToOne(targetEntity = RecursoEntity.class)
-    @JoinColumn(name = "ESTADO", nullable = false)
-    private RecursoEntity estado;
+    @Column(nullable = false)
+    private String estado;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
@@ -63,11 +60,11 @@ public class ReservaPenalizacionEntity {
         this.reserva = reserva;
     }
 
-    public RecursoEntity getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(RecursoEntity estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 

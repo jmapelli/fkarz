@@ -2,17 +2,15 @@ package pe.edu.cibertec.fkarz.core.reserva;
 
 import pe.edu.cibertec.fkarz.core.garantia.GarantiaService;
 import pe.edu.cibertec.fkarz.core.pago.PagoService;
-import pe.edu.cibertec.fkarz.core.recurso.RecursoEntity;
-import pe.edu.cibertec.fkarz.core.recurso.RecursoService;
 import pe.edu.cibertec.fkarz.core.vehiculo.VehiculoEntity;
 import pe.edu.cibertec.fkarz.util.DateUtil;
+import pe.edu.cibertec.fkarz.util.Estado;
 
 import java.util.Date;
 
 public class ReservaService {
 
     private ReservaRepository repository = null;
-    private RecursoService recursoService = null;
     private GarantiaService garantiaService = null;
     private PagoService pagoService = null;
 
@@ -53,7 +51,7 @@ public class ReservaService {
         repository = new ReservaRepository();
 
         reserva = repository.guardar(reserva);
-        this.guardarEstado(RecursoService.ESTADO_GENERADO, reserva);
+        this.guardarEstado(Estado.ACTIVO.val(), reserva);
 
         return reserva;
     }
@@ -68,11 +66,7 @@ public class ReservaService {
         return repository.guardarDetalle(rve);
     }
 
-    public void guardarEstado(String nombre, ReservaEntity reserva) throws Exception {
-        recursoService = new RecursoService();
-
-        RecursoEntity estado = recursoService.buscar(nombre, RecursoService.CATEGORIA_ESTADO);
-
+    public void guardarEstado(int estado, ReservaEntity reserva) throws Exception {
         ReservaEstadoEntity ree = new ReservaEstadoEntity();
         ree.setReserva(reserva);
         ree.setEstado(estado);

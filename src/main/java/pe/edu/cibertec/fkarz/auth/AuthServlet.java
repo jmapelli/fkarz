@@ -1,6 +1,8 @@
 package pe.edu.cibertec.fkarz.auth;
 
-import java.io.IOException;
+import pe.edu.cibertec.fkarz.core.usuario.UsuarioEntity;
+import pe.edu.cibertec.fkarz.core.usuario.UsuarioService;
+import pe.edu.cibertec.fkarz.util.Error;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,10 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import pe.edu.cibertec.fkarz.core.usuario.UsuarioEntity;
-import pe.edu.cibertec.fkarz.core.usuario.UsuarioService;
-import pe.edu.cibertec.fkarz.util.Error;
+import java.io.IOException;
 
 @WebServlet(urlPatterns = "/auth")
 public class AuthServlet extends HttpServlet {
@@ -42,6 +41,8 @@ public class AuthServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        us = new UsuarioService();
+
         RequestDispatcher rd = null;
 
         if (req.getAttribute("error_status") != null && req.getAttribute("error_message") != null) {
@@ -50,12 +51,10 @@ public class AuthServlet extends HttpServlet {
         }
 
         try {
-
             String username = req.getParameter("username");
             String password = req.getParameter("password");
             String redirect = req.getParameter("redirect");
 
-            us = new UsuarioService();
             UsuarioEntity ue = us.login(username, password);
 
             HttpSession session = req.getSession();
@@ -65,7 +64,6 @@ public class AuthServlet extends HttpServlet {
             if (redirect != null && !redirect.isEmpty()) {
                 res.sendRedirect(req.getContextPath() + redirect);
             } else {
-
             }
 
         } catch (Exception e) {
